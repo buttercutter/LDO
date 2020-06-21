@@ -1,5 +1,6 @@
 # LDO
 A simple LDO circuit capable of 3-Ampere output current, Iout
+
 Output voltage, Vout could be determined or changed using Vref voltage source which is just a simplification of bandgap circuit.
 
 Note;
