@@ -1,35 +1,34 @@
 # LDO
-A simple LDO circuit
+A simple LDO circuit capable of 3-Ampere output current, Iout
+Output voltage, Vout could be determined or changed using Vref voltage source which is just a simplification of bandgap circuit.
 
-Measurements are done using output load capacitance CL of 1uF
+Note;
+1. AC analysis Measurements are done using output load capacitance Cout of 10uF
+2. Both line and load regulation are tested without any output load capacitance Cout
 
-Gain: 75 dB
+Power Dissipation : 6.1 mW
 
-Unity-Gain Bandwidth: 8.63 kHz
+Gain: 70 dB
 
-Phase Margin: 90.37 degrees
+Unity-Gain Bandwidth: 39.7 kHz
 
-PSRR : 74 dB
+Phase Margin: 69.1 degrees
 
-line regulation : ±8 mV around nominal output voltage
+PSRR : 65 dB
 
-![LDO_transient_simulation_circuit](./LDO_transient_simulation_circuit.png)
+load regulation : maximum 500mV change in Vout during sudden change (1us rise or fall time) of load current (from Iout=3A to Iout=0A, and vice-versa)
 
-![LDO_transient_simulation_result](./LDO_transient_simulation_result.png)
+line regulation : maximum 8mV change in Vout during sudden change (1us rise or fall time) of input voltage (from Vin=5V to Vin=5.5V, and vice-versa)
 
-![LDO_ac_simulation_circuit](./LDO_ac_simulation_circuit.png)
-
-![LDO_ac_simulation_result](./LDO_ac_simulation_result.png)
-
-![LDO_psrr_simulation_circuit](./LDO_psrr_simulation_circuit.png)
-
-![LDO_psrr_simulation_result](./LDO_psrr_simulation_result.png)
+![LDO_circuit](./LDO_circuit.png)
 
 TODO: 
-1. Improve the initial transient noise durng power startup
-2. Improve the bandwidth of the LDO
-3. Load regulation metric result
-4. Understanding the mechanism of transient performance enhancement circuit consisting of M19, M27, M23, M24 and M25
-5. Investigate the purpose of M2 and M26
+1. Improve the phase margin of the LDO when there is no Cout (for acting as dominant pole)
+2. Improve load regulation metric result
 
-Credit: eevblog forum
+Circuit Mechanism Explanation:
+
+1. Transient performance enhancement circuit consisting of M19, M27, M23, M24 and M25 work by passing extra biasing current through M18
+2. M14 acts as active miller compensation together with C1.  M21, M22 and C2 act as dynamic miller compensation circuit.
+
+Credit: Reddit forum
